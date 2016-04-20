@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
 <<!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,7 @@
     <div class="clearfix visible-lg"></div>
  </div>
 <h2>MY Patient Search</h2>
-  <form class="form-group" role="form">	
+  <form:form action="patientadded" class="form-group" role="form" commandName="patient" method="post">	
 		<div class="panel-group" id="accordion">
         
 		   <div class="panel panel-primary">
@@ -76,37 +77,37 @@
              		
                     <div class="row col-md-12">
       			    <div class="col-lg-4"><label for="usr">First Name</label>
-      					<input type="text" class="form-control" id="firstName" placeholder="Enter alphabets">
+      					<form:input path="patientFname" type="text" class="form-control" id="patientFname" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Middle Name</label>
-      					<input type="text" class="form-control" id="middleName" placeholder="Enter alphabets">
+      					<form:input path="patientMname"  type="text" class="form-control" id="patientMname" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Last Name</label>
-      					<input type="text" class="form-control" id="lastName" placeholder="Enter alphabets">
+      					<form:input path="patientLname"   type="text" class="form-control" id="patientLname" placeholder="Enter alphabets"/>
 				    </div>
                     </div>
                     
                     <div class="row col-md-12">
       			    <div class=" col-md-4"><label for="usr">Date of Birth</label>
-      					<input type="date" class="form-control" id="dOB" placeholder="Select Date">
+      					<form:input path="patientDob" type="date" class="form-control" id="patientDob" placeholder="Select Date"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Blood Group</label>
-      					<input type="text" class="form-control" id="bloodGroup" placeholder="Format: AB+">
+      					<form:input path="bloodGroup" type="text" class="form-control" id="bloodGroup" placeholder="Format: AB+"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Primary Care Physician</label>
-      					<input type="text" class="form-control" id="pcp" placeholder="Enter alphabets">
+      					<form:input path="patientPcpName" type="text" class="form-control" id="patientPcpName" placeholder="Enter alphabets"/>
 				    </div>
                     </div>
                     
                     <div class="row col-md-12">
                     <div class=" col-md-4"><label for="usr">Marital Status</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      					<form:input path="maritalStatus" type="text" class="form-control"  placeholder="Enter alphabets"/>
 				    </div>
       			    <div class=" col-md-4"><label for="usr">Cell Phone Number</label>
-      					<input type="number" class="form-control" id="" placeholder="Format: 9988776655">
+      					<form:input path="cellPhone" type="number" class="form-control" placeholder="Format: 9988776655"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Home Phone Number</label>
-      					<input type="number" class="form-control" id="" placeholder="Format: 9988776655">
+      					<form:input path="homePhone" type="number" class="form-control"  placeholder="Format: 9988776655"/>
 				    </div>
 
                     </div>
@@ -114,36 +115,33 @@
                     <div class="row col-md-12">
 
 					<div class=" col-md-4"><label style="margin:10px">Sex</label>
-                        <input type="radio" name="RadioGroup1" value="sex" id="RadioGroup1_0">
+                        <form:radiobutton path="gender"  name="RadioGroup1" value="M" id="RadioGroup1_0"/>
                         Male
                       
-                        <input type="radio" name="RadioGroup1" value="sex" id="RadioGroup1_1">
+                        <form:radiobutton path="gender"  name="RadioGroup1" value="F" id="RadioGroup1_1"/>
                         Female
 				    </div>                   
                     
                     <div class=" col-md-8"><label style="margin:10px">Disability Status</label>&nbsp;
-                        <input type="radio" name="RadioGroup1" value="disyes" id="RadioGroup2_1">
+                        <form:radiobutton path="disabilityStatus"  name="RadioGroup1" value="Y" id="RadioGroup2_1"/>
                         Patient has disability
 
-                        <input type="radio" name="RadioGroup1" value="disno" id="RadioGroup2_2">
+                        <form:radiobutton path="disabilityStatus"  name="RadioGroup1" value="N" id="RadioGroup2_2"/>
                         Patient has no disability
 				    </div>
        		    </div>
                     
                     <div class="row col-md-12">
       			    <div class=" col-md-4"><label for="usr">Emergency Contact Name</label>
-      					<input type="date" class="form-control" id="" placeholder="Select Date">
+      					<form:input path="emergencyContactName"  type="date" class="form-control" id="" placeholder="Enter Name"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Relationship with Patient</label>
-   					  <input type="text" class="form-control" id="" placeholder="Enter alphabets">
+   					  <form:input path="emergencyContactRelationship"  type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Phone Number</label>
-   					  <input type="number" class="form-control" id="" placeholder="Format: 9988776655">
+   					  <form:input path="emergencyContactNumber"  type="number" class="form-control" id="" placeholder="Format: 9988776655"/>
 				    </div>
                     </div>
-                    
-                    <div class="row col-md-12" style="margin:10px">      			    
-                      <input type="submit" class="btn btn-success center-block"/>                						                    </div>
                     
                </div>              
             
@@ -159,27 +157,25 @@
 	
                   <div class="row col-md-12">
       			    <div class="col-lg-4"><label for="usr">Street</label>
-      					<input type="text" class="form-control" id="street" placeholder="Enter alphanumeric">
+      					<form:input path="addresses[0].street" type="text" class="form-control" id="street" placeholder="Enter alphanumeric"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">City</label>
-      					<input type="text" class="form-control" id="city" placeholder="Enter alphabets">
+      					<form:input path="addresses[0].city" type="text" class="form-control" id="city" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">State</label>
-      					<input type="text" class="form-control" id="state" placeholder="Format: MA">
+      					<form:input path="addresses[0].state" type="text" class="form-control" id="state" placeholder="Format: MA"/>
 				    </div>
                   </div>
                   
                   <div class="row col-md-12">
       			    <div class="col-lg-6"><label for="usr">Zip Code</label>
-      					<input type="number" class="form-control" id="zip" placeholder="Format: 02115">
+      					<form:input path="addresses[0].zipcode"  type="number" class="form-control" id="zip" placeholder="Format: 02115"/>
 				    </div>
                     <div class="col-lg-6"><label for="usr">Country</label>
-      					<input type="text" class="form-control" id="country" placeholder="Format: US">
+      					<form:input path="addresses[0].country"  type="text" class="form-control" id="country" placeholder="Format: US"/>
 				    </div>
                   </div>          
 
-                  <div class="row col-md-12" style="margin:10px">      			    
-                      <input type="submit" class="btn btn-success center-block"/>                						                  </div>                                           
               
               </div>
 		      
@@ -195,36 +191,35 @@
                    
                    <div class="row col-md-12">
       			    <div class="col-lg-4"><label>Smoking</label>&nbsp;
-                        <input type="radio" name="RadioGroup1" value="smoyes" id="RadioGroup3_1">
+                        <form:radiobutton path="socialHabits.smokingHabit"   name="RadioGroup1" value="Y" id="RadioGroup3_1"/>
                         Yes
-                        <input type="radio" name="RadioGroup1" value="smono" id="RadioGroup3_2">
+                        <form:radiobutton path="socialHabits.smokingHabit"   name="RadioGroup1" value="N" id="RadioGroup3_2"/>
                         No
 				    </div>
                     <div class="col-lg-4"><label>Alcohol</label>&nbsp;
-                        <input type="radio" name="RadioGroup1" value="alcyes" id="RadioGroup4_1">
+                        <form:radiobutton path="socialHabits.alcoholHabit"   name="RadioGroup1" value="Y" id="RadioGroup4_1"/>
                         Yes
-                        <input type="radio" name="RadioGroup1" value="alcno" id="RadioGroup4_2">
+                        <form:radiobutton path="socialHabits.alcoholHabit"  name="RadioGroup1" value="N" id="RadioGroup4_2"/>
                         No
 				    </div>
                     <div class="col-lg-4"><label>Recreational Drugs</label>&nbsp;
-                        <input type="radio" name="RadioGroup1" value="reces" id="RadioGroup5_1">
+                        <form:radiobutton path="socialHabits.recreationalDrugs"  name="RadioGroup1" value="Y" id="RadioGroup5_1"/>
                         Yes
-                        <input type="radio" name="RadioGroup1" value="recno" id="RadioGroup5_2">
+                        <form:radiobutton path="socialHabits.recreationalDrugs"  name="RadioGroup1" value="N" id="RadioGroup5_2"/>
                         No
 				    </div>                    
                   </div>  
                   
                   <div class="row col-md-12">
       			    <div class="col-lg-6"><label for="usr">Smoking Years</label>
-						<input type="number" class="form-control" id="smoking" placeholder="Enter no. of years">
+						<form:input  path="socialHabits.smokingYears" type="number" class="form-control" id="smoking" placeholder="Enter no. of years"/>
 				    </div>
                     <div class="col-lg-6"><label for="usr">Alcohol Years</label>
-      					<input type="number" class="form-control" id="alcohol" placeholder="Enter no. of years">
+      					<form:input  path="socialHabits.alcoholYears" type="number" class="form-control" id="alcohol" placeholder="Enter no. of years"/>
 				    </div>
                   </div>
                   
-                  <div class="row col-md-12" style="margin:10px">      			    
-                      <input type="submit" class="btn btn-success center-block"/>                						                  </div>             
+                              
                                           
               </div>
               
@@ -240,39 +235,38 @@
               
               	<div class="row col-md-12">
       			    <div class="col-lg-4"><label for="usr">Member Name</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      					<form:input  path="familyHistory.memberName" type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Relationship with Patient</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      					<form:input  path="familyHistory.memberPatientRelationship" type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Age</label>
-      					<input type="number" class="form-control" id="age" placeholder="Enter digits">
+      					<form:input  path="familyHistory.age" type="number" class="form-control" id="age" placeholder="Enter digits"/>
 				    </div>
                 </div>
                 
                 <div class="row col-md-12">
       			    <div class="col-lg-8"><label for="usr">Medical Condtions</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      					<form:input path="familyHistory.medicalConditions" type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label style="margin:25px">Alive?</label>&nbsp;
-                        <input type="radio" name="RadioGroup1" value="alive" id="RadioGroup6_1">
+                        <form:radiobutton path="familyHistory.alive"  name="RadioGroup1" value="Y" id="RadioGroup6_1"/>
                         Yes
-                        <input type="radio" name="RadioGroup1" value="dead" id="RadioGroup6_2">
+                        <form:radiobutton path="familyHistory.alive"  name="RadioGroup1" value="N" id="RadioGroup6_2"/>
                         No
 				    </div>
                 </div>                                                     
                 
                 <div class="row col-md-12">
                 	<div class="col-lg-8"><label for="usr">Death Cause</label>
-      					<input type="text" class="form-control" id="deathcause" placeholder="Enter alphabets">
+      					<form:input path="familyHistory.deathCause"  type="text" class="form-control" id="deathcause" placeholder="Enter alphabets"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Death Age</label>
-      					<input type="number" class="form-control" id="deathage" placeholder="Enter digits">
+      					<form:input path="familyHistory.deathAge"  type="number" class="form-control" id="deathage" placeholder="Enter digits"/>
 				    </div>
                 </div>
                 
-                <div class="row col-md-12" style="margin:10px">      			    
-                      <input type="submit" class="btn btn-success center-block"/>                						                </div>
+               
                                                         
               </div>
               
@@ -288,43 +282,43 @@
                             	  
                   <div class="row col-md-12">
       			    <div class="col-lg-6"><label for="usr">Primary Agent Name</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      					<form:input path="healthCareProxy.primaryAgentName" type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
-                    <div class="col-lg-6"><label for="usr">Relationship with Patient</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+                    <div class="col-lg-6"><label for="usr">Phone Number</label>
+      					<form:input path="healthCareProxy.primaryPhoneNumber" type="number" class="form-control" id="" placeholder="Enter Number"/>
 				    </div>
                   </div> 
                   
                   <div class="row col-md-12">
       			    <div class="col-lg-4"><label for="usr">Primary Agent Privileges</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphanumeric">
+      					<form:input path="healthCareProxy.primaryPrivileges" type="text" class="form-control" id="" placeholder="Enter alphanumeric"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective from</label>
-      					<input type="date" class="form-control" id="" placeholder="Select Date">
+      					<form:input path="healthCareProxy.primaryStartDate" type="date" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective till</label>
-      					<input type="date" class="form-control" id="" placeholder="Select Date">
+      					<form:input path="healthCareProxy.primaryEndDate" type="date" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                   </div>
                   
                   <div class="row col-md-12">
-      			    <div class="col-lg-6"><label for="usr">Primary Agent Name</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+      			    <div class="col-lg-6"><label for="usr">Secondary Agent Name</label>
+      					<form:input path="healthCareProxy.secondaryAgentName" type="text" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
-                    <div class="col-lg-6"><label for="usr">Relationship with Patient</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphabets">
+                    <div class="col-lg-6"><label for="usr">Phone Number</label>
+      					<form:input path="healthCareProxy.secondaryPhoneNumber" type="number" class="form-control" id="" placeholder="Enter alphabets"/>
 				    </div>
                   </div> 
                   
                   <div class="row col-md-12">
-      			    <div class="col-lg-4"><label for="usr">Primary Agent Privileges</label>
-      					<input type="text" class="form-control" id="" placeholder="Enter alphanumeric">
+      			    <div class="col-lg-4"><label for="usr">Secondary Agent Privileges</label>
+      					<form:input path="healthCareProxy.secondaryPrivileges" type="text" class="form-control" id="" placeholder="Enter alphanumeric"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective from</label>
-      					<input type="date" class="form-control" id="" placeholder="Select Date">
+      					<form:input path="healthCareProxy.secondaryStartDate" type="date" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective till</label>
-      					<input type="date" class="form-control" id="" placeholder="Select Date">
+      					<form:input path="healthCareProxy.secondaryEndDate" type="date" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                   </div>
                   
@@ -338,7 +332,7 @@
            
 		   </div>
            
-  		</form>
+  		</form:form>
 	</div>
     
 </body>

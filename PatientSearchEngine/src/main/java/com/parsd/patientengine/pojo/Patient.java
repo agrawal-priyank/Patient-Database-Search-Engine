@@ -2,8 +2,10 @@ package com.parsd.patientengine.pojo;
 // Generated Apr 19, 2016 7:35:31 PM by Hibernate Tools 4.3.1
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,13 +43,13 @@ public class Patient  implements java.io.Serializable {
      private String maritalStatus;
      private String patientPcpName;
      private Set<PatientImmunization> patientImmunizations = new HashSet<PatientImmunization>(0);
-     private EmergencyContact emergencyContact;
+    // private EmergencyContact emergencyContact;
      private Set<PatientSurgeryHistory> patientSurgeryHistories = new HashSet<PatientSurgeryHistory>(0);
      private Set<PatientEvent> patientEvents = new HashSet<PatientEvent>(0);
      private Set<PatientAllergy> patientAllergies = new HashSet<PatientAllergy>(0);
      private HealthCareProxy healthCareProxy;
      private SocialHabits socialHabits;
-     private Set<Address> addresses = new HashSet<Address>(0);
+     private List<Address> addresses = new ArrayList<Address>();
      private FamilyHistory familyHistory;
      private Set<PatientDiseaseSummary> patientDiseaseSummaries = new HashSet<PatientDiseaseSummary>(0);
      private Set<PatientInsuranceHistory> patientInsuranceHistories = new HashSet<PatientInsuranceHistory>(0);
@@ -69,7 +71,7 @@ public class Patient  implements java.io.Serializable {
         this.emergencyContactNumber = emergencyContactNumber;
         this.emergencyContactRelationship = emergencyContactRelationship;
     }
-    public Patient(String patientUpi, String patientFname, String patientLname, Date patientDob, char gender, char disabilityStatus, String cellPhone, String emergencyContactName, String emergencyContactNumber, String emergencyContactRelationship, String patientMname, String bloodGroup, String homePhone, String maritalStatus, String patientPcpName, Set<PatientImmunization> patientImmunizations, EmergencyContact emergencyContact, Set<PatientSurgeryHistory> patientSurgeryHistories, Set<PatientEvent> patientEvents, Set<PatientAllergy> patientAllergies, HealthCareProxy healthCareProxy, SocialHabits socialHabits, Set<Address> addresses, FamilyHistory familyHistory, Set<PatientDiseaseSummary> patientDiseaseSummaries, Set<PatientInsuranceHistory> patientInsuranceHistories, Set<PatientDisability> patientDisabilities) {
+    public Patient(String patientUpi, String patientFname, String patientLname, Date patientDob, char gender, char disabilityStatus, String cellPhone, String emergencyContactName, String emergencyContactNumber, String emergencyContactRelationship, String patientMname, String bloodGroup, String homePhone, String maritalStatus, String patientPcpName, Set<PatientImmunization> patientImmunizations, EmergencyContact emergencyContact, Set<PatientSurgeryHistory> patientSurgeryHistories, Set<PatientEvent> patientEvents, Set<PatientAllergy> patientAllergies, HealthCareProxy healthCareProxy, SocialHabits socialHabits, List<Address> address, FamilyHistory familyHistory, Set<PatientDiseaseSummary> patientDiseaseSummaries, Set<PatientInsuranceHistory> patientInsuranceHistories, Set<PatientDisability> patientDisabilities) {
        this.patientUpi = patientUpi;
        this.patientFname = patientFname;
        this.patientLname = patientLname;
@@ -86,7 +88,7 @@ public class Patient  implements java.io.Serializable {
        this.maritalStatus = maritalStatus;
        this.patientPcpName = patientPcpName;
        this.patientImmunizations = patientImmunizations;
-       this.emergencyContact = emergencyContact;
+      // this.emergencyContact = emergencyContact;
        this.patientSurgeryHistories = patientSurgeryHistories;
        this.patientEvents = patientEvents;
        this.patientAllergies = patientAllergies;
@@ -259,7 +261,7 @@ public class Patient  implements java.io.Serializable {
     public void setPatientImmunizations(Set<PatientImmunization> patientImmunizations) {
         this.patientImmunizations = patientImmunizations;
     }
-
+/*
 @OneToOne(fetch=FetchType.LAZY, mappedBy="patient")
     public EmergencyContact getEmergencyContact() {
         return this.emergencyContact;
@@ -267,7 +269,7 @@ public class Patient  implements java.io.Serializable {
     
     public void setEmergencyContact(EmergencyContact emergencyContact) {
         this.emergencyContact = emergencyContact;
-    }
+    }*/
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
     public Set<PatientSurgeryHistory> getPatientSurgeryHistories() {
@@ -315,11 +317,11 @@ public class Patient  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
-    public Set<Address> getAddresses() {
+    public List<Address> getAddresses() {
         return this.addresses;
     }
     
-    public void setAddresses(Set<Address> addresses) {
+    public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
 
@@ -358,8 +360,6 @@ public class Patient  implements java.io.Serializable {
     public void setPatientDisabilities(Set<PatientDisability> patientDisabilities) {
         this.patientDisabilities = patientDisabilities;
     }
-
-
 
 
 }
