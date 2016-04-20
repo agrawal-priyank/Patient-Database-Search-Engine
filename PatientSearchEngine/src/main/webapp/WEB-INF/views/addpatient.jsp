@@ -89,7 +89,7 @@
                     
                     <div class="row col-md-12">
       			    <div class=" col-md-4"><label for="usr">Date of Birth</label>
-      					<form:input path="patientDob" type="date" class="form-control" id="patientDob" placeholder="Select Date"/>
+      					<form:input path="patientDob" type="text" class="form-control" id="patientDob" placeholder="Select Date"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Blood Group</label>
       					<form:input path="bloodGroup" type="text" class="form-control" id="bloodGroup" placeholder="Format: AB+"/>
@@ -133,7 +133,7 @@
                     
                     <div class="row col-md-12">
       			    <div class=" col-md-4"><label for="usr">Emergency Contact Name</label>
-      					<form:input path="emergencyContactName"  type="date" class="form-control" id="" placeholder="Enter Name"/>
+      					<form:input path="emergencyContactName"  type="text" class="form-control" id="" placeholder="Enter Name"/>
 				    </div>
                     <div class=" col-md-4"><label for="usr">Relationship with Patient</label>
    					  <form:input path="emergencyContactRelationship"  type="text" class="form-control" id="" placeholder="Enter alphabets"/>
@@ -294,10 +294,10 @@
       					<form:input path="healthCareProxy.primaryPrivileges" type="text" class="form-control" id="" placeholder="Enter alphanumeric"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective from</label>
-      					<form:input path="healthCareProxy.primaryStartDate" type="date" class="form-control" id="" placeholder="Select Date"/>
+      					<form:input path="healthCareProxy.primaryStartDate" type="text" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective till</label>
-      					<form:input path="healthCareProxy.primaryEndDate" type="date" class="form-control" id="" placeholder="Select Date"/>
+      					<form:input path="healthCareProxy.primaryEndDate" type="text" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                   </div>
                   
@@ -315,10 +315,10 @@
       					<form:input path="healthCareProxy.secondaryPrivileges" type="text" class="form-control" id="" placeholder="Enter alphanumeric"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective from</label>
-      					<form:input path="healthCareProxy.secondaryStartDate" type="date" class="form-control" id="" placeholder="Select Date"/>
+      					<form:input path="healthCareProxy.secondaryStartDate" type="text" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                     <div class="col-lg-4"><label for="usr">Effective till</label>
-      					<form:input path="healthCareProxy.secondaryEndDate" type="date" class="form-control" id="" placeholder="Select Date"/>
+      					<form:input path="healthCareProxy.secondaryEndDate" type="text" class="form-control" id="" placeholder="Select Date"/>
 				    </div>
                   </div>
                   

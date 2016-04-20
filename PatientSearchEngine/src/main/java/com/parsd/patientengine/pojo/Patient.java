@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -101,10 +102,9 @@ public class Patient  implements java.io.Serializable {
        this.patientDisabilities = patientDisabilities;
     }
    
-     @Id 
-
-    
-    @Column(name="patient_UPI", unique=true, nullable=false, length=6)
+     @Id
+     @GeneratedValue
+     @Column(name="patient_UPI", unique=true, nullable=false, length=6)
     public String getPatientUpi() {
         return this.patientUpi;
     }
@@ -133,8 +133,8 @@ public class Patient  implements java.io.Serializable {
         this.patientLname = patientLname;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="patient_dob", nullable=false, length=10)
+    /*@Temporal(TemporalType.DATE)
+    */@Column(name="patient_dob", nullable=false, length=10)
     public Date getPatientDob() {
         return this.patientDob;
     }

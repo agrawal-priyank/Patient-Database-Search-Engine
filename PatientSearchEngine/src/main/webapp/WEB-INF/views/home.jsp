@@ -106,7 +106,7 @@
 		  &nbsp;&nbsp;&nbsp;&nbsp;
 		  <div class="form-group">
 			<label for="dateOfVisit">Date:</label>
-			<input name="dateOfVisit" type="date" class="form-control"  placeholder="">
+			<input name="dateOfVisit" type="text" class="form-control"  placeholder="">
 		  </div>
 		  &nbsp;&nbsp;&nbsp;&nbsp;
 		  <div class="form-group">
