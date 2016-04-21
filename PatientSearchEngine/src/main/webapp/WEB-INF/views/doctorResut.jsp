@@ -46,6 +46,29 @@
 			$("#bedForm").hide();
 		});
 	});
+
+     function deleteDoctor(doctorId, doctorUpin){
+
+    	 jQuery.ajax({
+			  type: "POST",
+			  dataType: "html",
+			  url: "deletedoctor",
+			  data: "doctorId="+doctorId+"&doctorUpin="+doctorUpin,
+			  success: function(msg){
+					if(msg === "success"){
+						var row = document.getElementById(doctorId);
+                        row.parentNode.removeChild(row);
+					}else{
+						 alert("Deleting doctor failed");
+						}
+			  },
+			  error: function(XMLHttpRequest, textStatus, errorThrown) {
+			     alert("error deleting doctor");
+			  }
+			});
+    	 
+         }
+	
 </script>
 </head>
 <body>
@@ -100,11 +123,12 @@
 							</thead>
 							<tbody>
 								<c:forEach var="doctor" items="${doctorList}">
-									<tr>
+									<tr id='${doctor.doctorId}'>
 										<td>${doctor.doctorId}</td>
 										<td>${doctor.doctorUpin}</td>
-										<td>${doctor.doctorFname}${doctor.doctorLname}</td>
+										<td>${doctor.doctorFname} ${doctor.doctorLname}</td>
 										<td>${doctor.doctorSpecialization}</td>
+										<td><button type="button" class="btn btn-danger btn-xs" onClick="deleteDoctor('${doctor.doctorId}','${doctor.doctorUpin}')">Delete</button></td>
 									</tr>
 								</c:forEach>
 

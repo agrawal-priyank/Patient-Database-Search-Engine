@@ -121,7 +121,7 @@ public class ConnectionDao {
 				paramters.put(paramters.size() + 1, split[1]);
 			}
 			
-			if(specialiaty != null && specialiaty.length() > 0){
+			if(specialiaty != null && specialiaty.length() > 0 && !specialiaty.equalsIgnoreCase("All")){
 				if(paramters.size() > 0)
 					query += " and d.doctor_specialization = ?";
 				else
@@ -383,6 +383,23 @@ public class ConnectionDao {
 			e.printStackTrace();
 		}
 
+		return row;
+	}
+	
+	public static int deleteDoctor(Connection conn, int doctorId){
+		
+		String varName1 = "DELETE FROM patient.doctor WHERE doctor_id=?;";
+		int row = -1;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(varName1);
+			pstmt.setInt(1, doctorId);
+			row = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return row;
 	}
 
