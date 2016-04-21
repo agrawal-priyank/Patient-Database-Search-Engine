@@ -93,8 +93,8 @@
     <c:forEach var="bed" items="${bedList}">
       <tr>
         <td>${bed.bedAssignmentId}</td>
-         <td>${bed.wardType}</td>
-        <td>${bed.patientEvent.patientFname} ${bed.patientEvent.patientLname}</td>
+        <td>${bed.wardType}</td>
+        <td>${bed.patientEvent.patient.patientFname} ${bed.patientEvent.patient.patientLname}</td>
         <td>${bed.dateFrom}</td>
         <td>${bed.dateTill}</td>
       </tr>
