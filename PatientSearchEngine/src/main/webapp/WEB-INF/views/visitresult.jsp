@@ -76,9 +76,11 @@
       <div class="panel-heading"> Search Result</div>
       <!-- Patient Search Result -->
       <div class="panel-body">
+      <c:set var="patientList" value="${requestScope.eventList}" />
+      
 		<table class="table table-hover">
     <thead>
-    <c:set var="patientList" value="${requestScope.eventList}" />
+    
     <tr>
     	<th>Patient UPI</th>
     	<th>Patient Name</th>

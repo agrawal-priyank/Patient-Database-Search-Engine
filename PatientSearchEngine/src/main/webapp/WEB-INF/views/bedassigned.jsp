@@ -76,9 +76,12 @@
       <div class="panel-heading"> Search Result</div>
       <!-- Patient Search Result -->
       <div class="panel-body">
+      <c:set var="bedList" value="${requestScope.bedList}" />
+    <c:choose>
+							<c:when test="${not empty bedList}">
+						
 		<table class="table table-hover">
     <thead>
-    <c:set var="bedList" value="${requestScope.bedList}" />
     <tr>
     	<th>Bed Number</th>
     	<th>Bed Type</th>
@@ -93,7 +96,7 @@
     <c:forEach var="bed" items="${bedList}">
       <tr>
         <td>${bed.bedAssignmentId}</td>
-        <td>${bed.wardType}</td>
+         <td>${bed.wardType}</td>
         <td>${bed.patientEvent.patient.patientFname} ${bed.patientEvent.patient.patientLname}</td>
         <td>${bed.dateFrom}</td>
         <td>${bed.dateTill}</td>
@@ -102,6 +105,13 @@
      
     </tbody>
   </table>
+  </c:when>
+  <c:otherwise>
+  	<div class="alert alert-warning">
+									<strong>Sorry:</strong> No BED assignment found in the database.
+								</div>
+  </c:otherwise>
+  </c:choose>
 		
 	  </div>
       <!-- End Search Result -->
