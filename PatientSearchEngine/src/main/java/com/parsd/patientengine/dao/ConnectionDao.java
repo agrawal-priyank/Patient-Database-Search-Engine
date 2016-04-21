@@ -248,6 +248,7 @@ public class ConnectionDao {
 				bedAssignment.setDateTill(resultSet.getDate(18));
 				bedAssignment.getPatientEvent().getPatient().setPatientFname(resultSet.getString(2));
 				bedAssignment.getPatientEvent().getPatient().setPatientLname(resultSet.getString(3));
+			    bedAssignments.add(bedAssignment);
 			}
 			return bedAssignments;
 		} catch (SQLException e) {
