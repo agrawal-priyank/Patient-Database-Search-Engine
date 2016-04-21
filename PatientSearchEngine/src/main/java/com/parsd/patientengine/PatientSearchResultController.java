@@ -3,6 +3,7 @@ package com.parsd.patientengine;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -26,9 +27,9 @@ import com.parsd.patientengine.pojo.Patient;
  * Handles requests for the application home page.
  */
 @Controller
-public class SearchResultController {
+public class PatientSearchResultController {
 
-	private static final Logger logger = LoggerFactory.getLogger(SearchResultController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PatientSearchResultController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -36,7 +37,7 @@ public class SearchResultController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public String onSubmitAction(HttpServletRequest request, Model model) {
 		ArrayList<Patient> patientList = new ArrayList<Patient>();
-		
+
 		System.out.println("***********In Search Result Controller*******");
 		try {
 			// patientDao.create(patient);
@@ -49,7 +50,7 @@ public class SearchResultController {
 				String location = request.getParameter("location");
 				String query = "Select * from patient";// where patient_fname=?
 														// or patient_lname=?
-				ResultSet rs = ConnectionDao.executeQueryString(connection, query, split,location);
+				ResultSet rs = ConnectionDao.executeQueryString(connection, query, split, location);
 
 				while (rs.next()) {
 					// Add other attributes
@@ -57,21 +58,29 @@ public class SearchResultController {
 					patient.setPatientUpi(rs.getString(1));
 					patient.setPatientFname(rs.getString(2));
 					patient.setPatientLname(rs.getString(3));
-					patient.setPatientDob(new Date(rs.getDate(4).getTime()));
-					//patient.setGender(Character.valueOf(rs.getString(5)));
+
+					DateFormat formatter;
+					Date date;
+					formatter = new SimpleDateFormat("dd-MM-yyyy");
+					date = formatter.parse(rs.getString(4));
+
+					patient.setPatientDob(date);
+					patient.setMaritalStatus(rs.getString(14));
+					patient.setEmergencyContactName(rs.getString(8));
 					patientList.add(patient);
 				}
 				model.addAttribute("patientList", patientList);
 			}
+			
 			if (param.equalsIgnoreCase("visit")) {
-				
+				String name = request.getParameter("");
 			}
 			// System.out.println("inserted id "+id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return "searchresult";
+		return "patientresult";
 	}
 
 }

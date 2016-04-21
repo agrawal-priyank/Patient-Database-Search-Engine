@@ -80,6 +80,23 @@ public class ConnectionDao {
 		return null;
 
 	}
+	
+	public static ResultSet executeVisitQuery(Connection conn, String query, String date , String type) {
+		try {
+			PreparedStatement pstmt = null;
+			query += " where pe.event_date=? and  pe.patient_type=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, date);
+			pstmt.setString(2, type);
+			//pstmt = conn.prepareStatement(query);
+			return pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 
 	public static int executeUpdateQuery(Connection conn, String insertQuery, String isbn, String title, String author,
 			float price) {
@@ -102,7 +119,7 @@ public class ConnectionDao {
 
 	public static String insertPatient(Connection conn, Patient patient) {
 		String last_inserted_id = null;
-		String varname1 = "" + "INSERT INTO patient.patient(patient_fname, " + "					patient_lname, "
+		String varname1 = "" + "INSERT INTO patient(patient_fname, " + "					patient_lname, "
 				+ "					patient_dob, " + "					gender, "
 				+ "					disability_status, " + "					cell_phone, "
 				+ "					emergency_contact_name, " + "					emergency_contact_number, "
@@ -133,7 +150,7 @@ public class ConnectionDao {
 			pstmt.setString(12, patient.getHomePhone());
 			pstmt.setString(13, patient.getMaritalStatus());
 			pstmt.setString(14, patient.getPatientPcpName());
-			last_inserted_id = UUID.randomUUID().toString().replace(",", "").substring(0, 5);
+			last_inserted_id = UUID.randomUUID().toString().replace(",", "").substring(0, 6);
 			pstmt.setString(15, last_inserted_id);
 			int id = pstmt.executeUpdate();
 			if (id > 0) {

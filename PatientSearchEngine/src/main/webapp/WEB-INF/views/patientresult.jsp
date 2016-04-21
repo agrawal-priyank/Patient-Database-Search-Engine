@@ -84,7 +84,8 @@
         <th>Firstname</th>
         <th>Lastname</th>
         <th>DOB</th>
-        <th>Sex</th>
+        <th>Marital Status</th>
+        <th>Emergency Contact Name</th>
       </tr>
     
       
@@ -96,7 +97,8 @@
         <td>${patient.patientFname}</td>
         <td>${patient.patientLname}</td>
         <td>${patient.patientDob}</td>
-        <td>${patient.gender}</td>
+        <td>${patient.maritalStatus}</td>
+        <td>${patient.emergencyContactName}</td>
       </tr>
       </c:forEach>
      
