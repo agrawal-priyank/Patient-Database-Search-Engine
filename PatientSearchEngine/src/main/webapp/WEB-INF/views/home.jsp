@@ -119,7 +119,7 @@
 						<!-- End: Patient Search Box -->
 						<!-- Visit Search Box -->
 						<div id="visitForm" class="row">
-						<form action="search?param=visit">
+						<form action="visit?param=visit">
 							<div class="">&nbsp;</div>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-group">
