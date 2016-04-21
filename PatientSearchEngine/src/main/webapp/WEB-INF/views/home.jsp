@@ -145,6 +145,7 @@
 						<!-- End: Visit Search Box -->
 						<!-- Doctor Search Box -->
 						<div id="doctorForm" class="row">
+						<form action="doctor?param=doctor">
 							<div class="">&nbsp;</div>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-group">
@@ -156,7 +157,7 @@
 							<div class="form-group">
 								<label for="type">Speciality:</label> <select
 									class="form-control" name="typeofDoctor">
-									<option>Gyanecologist</option>
+									<option>Physician</option>
 									<option>Orthopedic</option>
 								</select>
 							</div>
@@ -165,15 +166,17 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
+						  </form>	
 						</div>
 						<!-- End: Doctor Search Box -->
 						<!-- Bed Search Box -->
 						<div id="bedForm" class="row">
+						<form action="bedassigned?param=bedassigned">
 							<div class="">&nbsp;</div>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-group">
 								<label for="email">Bed no.:</label> <input type="number"
-									class="form-control" placeholder="Enter the Bed number">
+									class="form-control" placeholder="Enter the Bed number" name="bednumber"/>
 							</div>
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<div class="form-group">
@@ -188,7 +191,7 @@
 							<div class="form-group">
 								<button type="submit" class="btn btn-success">Submit</button>
 							</div>
-
+						</form>
 						</div>
 						<!-- End: Bed Search Box -->
 					</div>

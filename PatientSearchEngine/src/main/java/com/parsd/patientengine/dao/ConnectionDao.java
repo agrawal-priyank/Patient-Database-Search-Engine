@@ -10,9 +10,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.UUID;
 
+import com.parsd.patientengine.pojo.BedAssignment;
+import com.parsd.patientengine.pojo.Doctor;
 import com.parsd.patientengine.pojo.Patient;
 
 import java.sql.PreparedStatement;
@@ -21,7 +24,7 @@ public class ConnectionDao {
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/patient";// mysql://newton.neu.edu:3306/usersdb","student","p@sswOrd"
 	static final String USER = "root";
-	static final String PASS = "root";
+	static final String PASS = "1234";
 	private static ConnectionDao connectionDao;
 
 	private ConnectionDao() {
@@ -96,6 +99,116 @@ public class ConnectionDao {
 		}
 		return null;
 
+	}
+	
+	public static List<Doctor> getDoctor(Connection conn, String[] split, String specialiaty){
+		
+		List<Doctor> doctors = new ArrayList<Doctor>();
+		Map<Integer, String> paramters = new HashMap<Integer, String>();
+		try {
+			PreparedStatement pstmt = null;
+			String query = "select * from patient.doctor d ";
+			if(split != null && split.length > 0){
+				query += "where d.doctor_fname = ?";
+				paramters.put(paramters.size() + 1, split[0]);
+			}
+			
+			if(split != null && split.length > 1){
+				if(paramters.size() > 0)
+					query += " and d.doctor_lname = ?";
+				else
+					query += "where d.doctor_lname = ?";
+				paramters.put(paramters.size() + 1, split[1]);
+			}
+			
+			if(specialiaty != null && specialiaty.length() > 0){
+				if(paramters.size() > 0)
+					query += " and d.doctor_specialization = ?";
+				else
+					query += "where d.doctor_specialization = ?";
+				paramters.put(paramters.size() + 1, specialiaty);
+			}
+			System.out.println("getDoctor "+query);
+			pstmt = conn.prepareStatement(query);
+			
+			if(paramters.size() > 0){
+				for (Entry<Integer, String> entry  : paramters.entrySet()) {
+				    System.out.println(entry.getKey() + " - " + entry.getValue());
+				    pstmt.setString(entry.getKey(), entry.getValue());
+				}
+
+			}
+			ResultSet resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+				
+				Doctor doctor = new Doctor();
+				doctor.setDoctorId(resultSet.getInt(1));
+				doctor.setDoctorUpin(resultSet.getString(2));
+				doctor.setDoctorFname(resultSet.getString(3));
+				doctor.setDoctorLname(resultSet.getString(4));
+				doctor.setDoctorMname(resultSet.getString(5));
+				doctor.setDoctorSpecialization(resultSet.getString(6));
+				doctors.add(doctor);
+			}
+			return doctors;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return doctors;
+	}
+	
+	public static List<BedAssignment> getBedAssigned(Connection conn, Integer bedNumber, String roomType){
+		
+		List<BedAssignment> bedAssignments = new ArrayList<BedAssignment>();
+		Map<Integer, Object> paramters = new HashMap<Integer, Object>();
+		try {
+			PreparedStatement pstmt = null;
+			String query = "Select * from patient p inner join bed_assignment pbd on pbd.patient_UPI = p.patient_UPI ";
+			if(bedNumber != null){
+				query += "where pbd.bed_assignment_id = ?";
+				paramters.put(paramters.size() + 1, bedNumber);
+			}
+			
+			if(roomType != null && roomType.length() > 0){
+				if(paramters.size() > 0)
+					query += " or ward_type = ?";
+				else
+					query += "where pbd.ward_type = ?";
+				paramters.put(paramters.size() + 1, roomType);
+			}
+			System.out.println("getBedAssigned "+query);
+			pstmt = conn.prepareStatement(query);
+			
+			if(paramters.size() > 0){
+				for (Entry<Integer, Object> entry  : paramters.entrySet()) {
+				    System.out.println(entry.getKey() + " - " + entry.getValue());
+				    if(entry.getValue() instanceof Integer){
+				    	pstmt.setInt(entry.getKey(), (Integer)entry.getValue());
+				    }else{
+				    	 pstmt.setString(entry.getKey(), (String)entry.getValue());
+				    }
+				   
+				}
+
+			}
+			ResultSet resultSet = pstmt.executeQuery();
+			while (resultSet.next()) {
+				
+				BedAssignment bedAssignment = new BedAssignment();
+				bedAssignment.setBedAssignmentId(resultSet.getInt(16));
+				bedAssignment.setWardType(resultSet.getString(19));
+				bedAssignment.setDateFrom(resultSet.getDate(17));
+				bedAssignment.setDateTill(resultSet.getDate(18));
+				bedAssignment.getPatientEvent().getPatient().setPatientFname(resultSet.getString(2));
+				bedAssignment.getPatientEvent().getPatient().setPatientLname(resultSet.getString(3));
+			}
+			return bedAssignments;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return bedAssignments;
 	}
 
 	public static int executeUpdateQuery(Connection conn, String insertQuery, String isbn, String title, String author,

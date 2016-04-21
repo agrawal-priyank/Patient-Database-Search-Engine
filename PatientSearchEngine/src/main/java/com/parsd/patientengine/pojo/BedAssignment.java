@@ -17,6 +17,7 @@ public class BedAssignment  implements java.io.Serializable {
      private String wardType;
 
     public BedAssignment() {
+    	patientEvent = new PatientEvent();
     }
 
     public BedAssignment(int bedAssignmentId, PatientEvent patientEvent, Date dateFrom, Date dateTill, String wardType) {
