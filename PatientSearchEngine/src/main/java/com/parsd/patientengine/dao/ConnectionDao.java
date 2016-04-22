@@ -521,6 +521,56 @@ public class ConnectionDao {
 		return cnt;
 
 	}
+	
+	
+	public static int updatePatient(Connection conn,String patient_UPI, String maritialStatus, String ecn) {
+		int cnt = 0;
+		Map<Integer, Object> paramters = new HashMap<Integer, Object>();
+		
+		String query = "UPDATE patient.patient p ";
+			try {
+				PreparedStatement pstmt = null;
+				if(maritialStatus != null){
+					query += "Set p.marital_status = ?";
+					paramters.put(paramters.size() + 1, maritialStatus);
+				}
+				
+				if(ecn != null && ecn.length() > 0){
+					if(paramters.size() > 0)
+						query += " , p.emergency_contact_name = ?";
+					else
+						query += "Set p.emergency_contact_name = ?";
+					paramters.put(paramters.size() + 1, ecn);
+				}
+				
+				query += " where p.patient_UPI = ?";
+				paramters.put(paramters.size() + 1, patient_UPI);
+				
+				System.out.println("updatePatient "+query);
+				pstmt = conn.prepareStatement(query);
+				
+				if(paramters.size() > 0){
+					for (Entry<Integer, Object> entry  : paramters.entrySet()) {
+					    System.out.println(entry.getKey() + " - " + entry.getValue());
+					    if(entry.getValue() instanceof Integer){
+					    	pstmt.setInt(entry.getKey(), (Integer)entry.getValue());
+					    }else{
+					    	 pstmt.setString(entry.getKey(), (String)entry.getValue());
+					    }
+					   
+					}
+
+				}
+				cnt = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		return cnt;
+
+	}
+
 
 	public static void main(String[] args) {
 		// Connection con = getConnection();

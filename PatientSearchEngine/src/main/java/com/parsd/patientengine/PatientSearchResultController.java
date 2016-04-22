@@ -48,7 +48,10 @@ public class PatientSearchResultController {
 				String name = request.getParameter("patientName");
 				String split[] = StringUtils.split(name);
 				String location = request.getParameter("location");
-				String query = "select * from patient.patient p join patient.address a on p.patient_UPI = a.patient_UPI ";// where patient_fname=?
+				String query = "select * from patient.patient p ";
+				if(location != null && location.length() > 0){
+					 query = "select * from patient.patient p join patient.address a on p.patient_UPI = a.patient_UPI ";
+				}
 														// or patient_lname=?
 				ResultSet rs = ConnectionDao.executeQueryString(connection, query, split, location);
 

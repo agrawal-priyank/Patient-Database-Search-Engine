@@ -16,35 +16,59 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<style type="text/css">
+.readonlyStyle {
+	background: none;
+	border: none;
+	outline: none;
+	
+}
+</style>
 <script>
+
 	$(document).ready(function() {
 		$("#visitForm").hide();
 		$("#doctorForm").hide();
 		$("#bedForm").hide();
-		$("#patient").click(function() {
-			$("#patientForm").show();
-			$("#visitForm").hide();
-			$("#doctorForm").hide();
-			$("#bedForm").hide();
+		$(".btn-info").click(function() {
+			//$(this).parent().parent();
+			 var dsbutton = $(this);
+			 var $row = dsbutton.closest("tr");
+			 var patientId = $row.children('td.patientid').text();
+             var $tds = $row.find("input:text");    
+			if($(this).text() == "Update"){
+				dsbutton.text("Save");
+				 $.each($tds, function () {             
+	                 $(this).removeAttr("readonly");
+	                 $(this).removeClass("readonlyStyle");
+	             });
+			}else{
+					 var query = 'updatePatient?patientId='+patientId + '&';
+					 
+					 $.each($tds, function () {  
+						 $(this).attr("readonly");
+		                 $(this).addClass("readonlyStyle");
+		                 var name = $(this).attr("name");
+		                 var val = $(this).val();
+		                 if (name !== null || val !== undefined) {
+		                     query = query + name + "=" + val + "&";
+		                 }
+					 });
+					 jQuery.ajax({
+	                        url: query,
+	                        success: function (result) {
+	                        	dsbutton.text("Update");
+	                        	 
+	                        },
+	                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+	           			     alert("Update Patient failed");
+	           			  },
+	                        async: true
+	                    });
+				}
+            
 		});
-		$("#visit").click(function() {
-			$("#patientForm").hide();
-			$("#visitForm").show();
-			$("#doctorForm").hide();
-			$("#bedForm").hide();
-		});
-		$("#bed").click(function() {
-			$("#patientForm").hide();
-			$("#visitForm").hide();
-			$("#doctorForm").hide();
-			$("#bedForm").show();
-		});
-		$("#doctor").click(function() {
-			$("#patientForm").hide();
-			$("#visitForm").hide();
-			$("#doctorForm").show();
-			$("#bedForm").hide();
-		});
+
 	});
 </script>
 </head>
@@ -103,12 +127,16 @@
 									<tbody>
 										<c:forEach var="patient" items="${patientList}">
 											<tr>
-												<td>${patient.patientUpi}</td>
+												<td class="patientid">${patient.patientUpi}</td>
 												<td>${patient.patientFname}</td>
 												<td>${patient.patientLname}</td>
 												<td>${patient.patientDob}</td>
-												<td>${patient.maritalStatus}</td>
-												<td>${patient.emergencyContactName}</td>
+												<td><input name="maritalStatus" type="text" class="readonlyStyle" readonly
+													value="${patient.maritalStatus}" /></td>
+												<td><input name="ecn" type="text" class="readonlyStyle" readonly
+													value="${patient.emergencyContactName}" /></td>
+												<td><button type="button" class="btn btn-info btn-xs"
+														onClick="">Update</button></td>
 											</tr>
 										</c:forEach>
 
