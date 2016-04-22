@@ -38,11 +38,13 @@ public class PatientController {
 			Connection connection = ConnectionDao.getConnection();
 			String id = ConnectionDao.insertPatient(connection, patient);
 			System.out.println("inserted id "+id);
+			model.addAttribute("patientId",id);
 		} catch (Exception e) {
 			e.printStackTrace();
+			model.addAttribute("errormsg",e.getMessage());
 		}
 		
-		return "patientadded";
+		return "addpatient";
 	}
 	
 	@InitBinder

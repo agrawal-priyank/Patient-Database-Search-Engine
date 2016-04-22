@@ -366,6 +366,7 @@ public class ConnectionDao {
 			pstmt.setString(5, Character.toString(patient.getFamilyHistory().getAlive()));
 			pstmt.setString(6, patient.getFamilyHistory().getMedicalConditions());
 			pstmt.setString(7, patient.getFamilyHistory().getDeathCause());
+			
 			pstmt.setInt(8, patient.getFamilyHistory().getDeathAge());
 
 			row = pstmt.executeUpdate();
