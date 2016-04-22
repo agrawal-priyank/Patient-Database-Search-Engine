@@ -48,10 +48,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">MyPatientSearch</a>
+      <a class="navbar-brand" href="/SocialProject">MyPatientSearch</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="/SocialProject">Home</a></li>
       <li><a href="addpatient">Patient</a></li>
     </ul>
   </div>
@@ -69,15 +69,18 @@
     </div>
     <div class="clearfix visible-lg"></div>
  </div>
-<h2>MY Patient Search</h2>
+<h2>MY Patient-Visit Search</h2>
 <form class="form-inline" role="form">
   <div class="panel-group">
     <div class="panel panel-info">
       <div class="panel-heading"> Search Result</div>
       <!-- Patient Search Result -->
       <div class="panel-body">
-      <c:set var="patientList" value="${requestScope.eventList}" />
-      
+      <c:set var="eventList" value="${requestScope.eventList}" />
+      <c:choose>
+							<c:when test="${not empty eventList}">
+							
+						
 		<table class="table table-hover">
     <thead>
     
@@ -105,7 +108,15 @@
       </c:forEach>
      
     </tbody>
+    
   </table>
+  </c:when>
+  <c:otherwise>
+  	<div class="alert alert-warning">
+									<strong>Sorry:</strong> No Visit Summary Found found in the database.
+								</div>
+  </c:otherwise>
+  </c:choose>
 		
 	  </div>
       <!-- End Search Result -->

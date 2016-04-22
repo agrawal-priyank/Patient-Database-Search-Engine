@@ -15,20 +15,17 @@ import com.parsd.patientengine.dao.ConnectionDao;
 @Controller
 public class UpdateController {
 
-	@RequestMapping(value = "/updateDoctor", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatePatient**", method = RequestMethod.GET)
 	public void onUpdateDoctor(HttpServletRequest request,HttpServletResponse response, Model model) {
 		
-		String doctorId = request.getParameter("doctorId");
-		String doctorUpin = request.getParameter("doctorUpin");
-		String doctorFname= request.getParameter("doctorFname");
-		String doctorLname = request.getParameter("doctorLname");
-		String doctorMname= request.getParameter("doctorMname");
-		String doctorSpecialization = request.getParameter("doctorSpecialization");
+		String patientId = request.getParameter("patientId");
+		String maritalStatus = request.getParameter("maritalStatus");
+		String ecn= request.getParameter("ecn");
 		
 		Connection connection = ConnectionDao.getConnection();
 		int cnt = -1;
-		if(doctorId != null)
-			cnt = ConnectionDao.updateDoctor(connection, Integer.parseInt(doctorId), doctorUpin, doctorFname, doctorLname, doctorMname, doctorSpecialization);
+		if(patientId != null)
+			cnt = ConnectionDao.updatePatient(connection, patientId, maritalStatus, ecn);
 		
 		
 	}
