@@ -17,7 +17,7 @@ public class FamilyHistory  implements java.io.Serializable {
      private char alive;
      private String medicalConditions;
      private String deathCause;
-     private Integer deathAge;
+     private int deathAge;
 
     public FamilyHistory() {
     }
@@ -98,7 +98,7 @@ public class FamilyHistory  implements java.io.Serializable {
     public void setDeathCause(String deathCause) {
         this.deathCause = deathCause;
     }
-    public Integer getDeathAge() {
+    public int getDeathAge() {
         return this.deathAge;
     }
     

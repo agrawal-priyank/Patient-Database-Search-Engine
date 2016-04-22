@@ -36,7 +36,7 @@ public class SearchController {
 				Connection connection = ConnectionDao.getConnection();
 				String number = request.getParameter("bednumber");
 				String roomType = request.getParameter("typeofRoom");
-				model.addAttribute("bedList", ConnectionDao.getBedAssigned(connection,number != null ? Integer.parseInt(number): null, roomType));
+				model.addAttribute("bedList", ConnectionDao.getBedAssigned(connection,(number != null && number.length() > 0 )? Integer.parseInt(number): null, roomType));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

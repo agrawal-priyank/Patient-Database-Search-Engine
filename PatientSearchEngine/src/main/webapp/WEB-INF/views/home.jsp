@@ -208,7 +208,7 @@
 							<div class="form-group col-md-8">
 								<label for="type">Speciality:</label> <select
 									class="form-control" name="typeofDoctor">
-									<option>Any</option>
+									<option>All</option>
 									<option>Physician</option>
 									<option>Orthopedic</option>
   									<option>Dermatologist</option>
