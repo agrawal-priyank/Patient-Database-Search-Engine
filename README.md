@@ -1,7 +1,7 @@
 # Patient Search Engine - Healthcare Provider Application
 This is the final project for Database Management and Database Design course.
 
-# Project Description
+# Description
 1. Designed a logical relational database model for Healthcare providers that can hold all the records related to in-patients and out-patients and store it into the coherent tables in the database. 
 2. Developed a Java/J2EE application with the functionality of create, retrieve, update and delete all the information regarding a patient.
 3. Implemented stored procedures, triggers and functions that query the database to maintain data consistency and integrity.
