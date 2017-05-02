@@ -1,11 +1,20 @@
-# PatientSearchEngine
+# Patient Search Engine - Healthcare Provider Application
+This is the final project for Database Management and Database Design course.
 
-Developed a search engine for the Hospital Admin.This project implements efficient database design.
-Technology Used:Java,J2EE,Toad Data Modeller,Angular JS,SQL Server 2014
+# Project Description
+1. Designed a logical relational database model for Healthcare providers that can hold all the records related to in-patients and out-patients and store it into the coherent tables in the database. 
+2. Developed a Java/J2EE application with the functionality of create, retrieve, update and delete all the information regarding a patient.
+3. Implemented stored procedures, triggers and functions that query the database to maintain data consistency and integrity.
+4. Designed a complete Business Requirements Document.
 
-1. It is a project developed using Spring MVC ,JDBC.
-2. It is a MAVEN project
-3. Developed in STS (SPRING TOOL SUITE)
-4. Download the zip and import as MAVEN Project (SPRING MVC PROJECT)
-5. DATABASE FILES ARE ALSO ADDED 
-6. DB USED : MYSQL
+# Technologies
+Java, JavaScript, J2EE, JDBC, JSP, Servlets, Spring MVC, Maven, AngularJS, JSON, JQuery, Ajax, HTML/CSS, Bootstrap
+
+# IDE
+STS (Spring Tool Suite), Dreamweaver
+
+# SQL
+SQL Server 2014 (Logical Data Model), MySQL (Persisting Data)
+
+# Server
+Apache Tomcat
