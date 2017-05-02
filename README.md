@@ -7,6 +7,12 @@ This is the final project for Database Management and Database Design course.
 3. Implemented stored procedures, triggers and functions that query the database to maintain data consistency and integrity.
 4. Designed a complete Business Requirements Document.
 
+# BRD & Model
+1. [Business Requirement Document](https://github.com/agrawal-priyank/Patient-Search-Engine_Database-Project/blob/master/BRD%20%26%20Model/Business%20Requirement%20Document%20for%20Patient%20Model%20by%20PARSd.docx)
+2. [Logical Data Model](https://github.com/agrawal-priyank/Patient-Search-Engine_Database-Project/blob/master/BRD%20%26%20Model/Patient_Model_PARSd.jpeg)
+3. [Web Application](https://github.com/agrawal-priyank/Patient-Search-Engine_Database-Project/tree/master/PatientSearchEngine)
+4. [Presentation](https://github.com/agrawal-priyank/Patient-Search-Engine_Database-Project/blob/master/presentation/Parsd.pptx)
+
 # Technologies
 Java, JavaScript, J2EE, JDBC, JSP, Servlets, Spring MVC, Maven, AngularJS, JSON, JQuery, Ajax, HTML/CSS, Bootstrap
 
