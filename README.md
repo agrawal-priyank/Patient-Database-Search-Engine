@@ -11,7 +11,7 @@
 ### Data Model
 * [Logical Data Model](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/BRD%20%26%20Model/Patient_Model_PARSd.jpeg)
 
-### Web Application
+### Application
 * [Web Application](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/PatientSearchEngine)
 
 ### Presentation
