@@ -5,14 +5,20 @@
 2. Developed a Java/J2EE application with the functionality of create, retrieve, update and delete all the information regarding a patient.
 3. Implemented stored procedures, triggers and functions that query the database to maintain data consistency and integrity.
 
+### ERD
+* [Entity Relationship Diagram](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/erd/erd.jpg)
+
 ### BRD
-* [Business Requirement Document](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/BRD%20%26%20Model/Business%20Requirement%20Document%20for%20Patient%20Model%20by%20PARSd.docx)
+* [Business Requirement Document](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/brd/Business%20Requirement%20Document%20for%20Patient%20Model%20by%20PARSd.docx)
 
 ### Data Model
-* [Logical Data Model](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/BRD%20%26%20Model/Patient_Model_PARSd.jpeg)
+* [Logical Data Model](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/model)
+
+### SQL
+* [Scripts, Stored Procedures and Triggers](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/sql)
 
 ### Application
-* [Web Application](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/PatientSearchEngine)
+* [Web Application](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/application)
 
 ### Presentation
 * [PPT](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/tree/master/presentation)
