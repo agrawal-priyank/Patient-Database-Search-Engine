@@ -1,9 +1,10 @@
-## Patient Search Engine - Healthcare Provider Application
+## Patient Search Engine - Full Stack Web Application
 
 ### Description
-1. Designed a logical relational database model for Healthcare providers that can hold all the records related to in-patients and out-patients and store it into the coherent tables in the database. 
-2. Developed a Java/J2EE application with the functionality of create, retrieve, update and delete all the information regarding a patient.
-3. Implemented stored procedures, triggers and functions that query the database to maintain data consistency and integrity.
+* Designed a logical relational database model for Healthcare providers that can hold all the records related to in-patients and out-patients and store it into the coherent tables in the database. 
+* Developed a supporting Java/J2EE application with the functionality of creating, retrieving, updating, and deleting information about the patients.
+* Implemented stored procedures and triggers that query the database to maintain data consistency and integrity.
+* Wrote the business requirements document.
 
 ### ERD
 * [Entity Relationship Diagram](https://github.com/agrawal-priyank/Patient-Database-Search-Engine/blob/master/erd/erd.jpg)
@@ -26,14 +27,8 @@
 ### Programming Language 
 Java, JavaScript, SQL
 
-### Web Technologies and Frameworks
-J2EE, JDBC, JSP, Servlets, Spring MVC, Maven, AngularJS, JSON, JQuery, Ajax, HTML/CSS, Bootstrap
+### Technologies
+J2EE, Spring MVC, JDBC, HTML, CSS, Bootstrap, JavaScript, JQuery, AJAX 
 
 ### IDE
-STS (Spring Tool Suite), Dreamweaver, Sublime
-
-### RDBMS
-SQL Server 2014 (Logical Data Model), MySQL (Persisting Web Application Data)
-
-### Server
-Apache Tomcat
+Toad Data Modeler, SQL Server, MySQL, NetBeans, Dreamweaver
