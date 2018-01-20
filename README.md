@@ -31,4 +31,4 @@ Java, JavaScript, SQL
 J2EE, Spring MVC, JDBC, Maven, HTML, CSS, Bootstrap, JQuery, AJAX
 
 ### Tools/IDE
-Toad Data Modeler, SQL Server, MySQL, NetBeans, Dreamweaver
+NetBeans, Dreamweaver, Toad Data Modeler, SQL Server, MySQL
